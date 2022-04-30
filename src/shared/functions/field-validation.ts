@@ -9,7 +9,7 @@ export function checkEmailOrUsername(value: string | null): {
     const regex = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
     return { type: "email", isValid: regex.test(value) };
   }
-  return { type: "length", isValid: value.length > 6 };
+  return { type: "length", isValid: value.length >= 6 };
 }
 
 export function checkPasswordLength(value: string): {
@@ -17,7 +17,22 @@ export function checkPasswordLength(value: string): {
   isValid: boolean;
 } {
   const length = value.length;
-  return { type: length === 0 ? "empty" : "length", isValid: length > 6 };
+  return { type: length === 0 ? "empty" : "length", isValid: length >= 6 };
+}
+
+export function verifyPassword(
+  value: string,
+  firstPasswordState?: {
+    value: string;
+    error: boolean;
+    errorType: "length" | "email" | "empty" | "mismatch";
+  }
+): { type: "empty" | "mismatch"; isValid: boolean } {
+  if (!value) return { type: "empty", isValid: false };
+  if (value.length < 6) return { type: "mismatch", isValid: false };
+  if (firstPasswordState && firstPasswordState.value !== value)
+    return { type: "mismatch", isValid: false };
+  return { type: "empty", isValid: true };
 }
 
 export function checkName(value: string | null): {
