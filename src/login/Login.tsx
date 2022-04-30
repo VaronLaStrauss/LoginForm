@@ -1,20 +1,13 @@
-import { Component, ReactNode } from "react";
+import { ReactNode } from "react";
+import { Form } from "../shared/class/form-class";
 import {
   checkEmailOrUsername,
-  checkPasswordLength,
+  checkMinLength,
   onSubmit,
 } from "../shared/functions/field-validation";
-import { FormType } from "../shared/types/form-type";
 import "./Login.scss";
 
-export default class Login extends Component {
-  controls: FormType = {};
-
-  state: {
-    controls: FormType;
-    completed: boolean;
-  } = { completed: false, controls: this.controls };
-
+export default class Login extends Form {
   render(): ReactNode {
     return (
       <form className="login" onSubmit={onSubmit}>
@@ -25,9 +18,7 @@ export default class Login extends Component {
           id="login_username"
           name="username"
           onChange={({ target: { value } }) => {
-            const { isValid, type: errorType } = checkEmailOrUsername(value);
-            this.controls.username = { value, error: !isValid, errorType };
-            this.setState({ controls: this.controls });
+            this.markRender("username", value, checkEmailOrUsername(value));
           }}
         />
         {this.controls.username?.error &&
@@ -50,8 +41,7 @@ export default class Login extends Component {
           id="login_password"
           name="password"
           onChange={({ target: { value } }) => {
-            const { isValid, type: errorType } = checkPasswordLength(value);
-            this.setState({ password: { value, error: !isValid, errorType } });
+            this.markRender("password", value, checkMinLength(value));
           }}
         />
         {this.controls.password?.error &&
