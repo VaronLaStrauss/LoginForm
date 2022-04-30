@@ -34,6 +34,8 @@ export abstract class FormComponent extends Component {
   onSubmit(ev: FormEvent<HTMLFormElement>) {
     ev.preventDefault();
     if (this.completed) {
+      const form = ev.target as HTMLFormElement;
+      form.reset();
       this.setState({ completed: true });
     }
   }
