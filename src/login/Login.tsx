@@ -2,6 +2,7 @@ import { Component, ReactNode } from "react";
 import {
   checkEmailOrUsername,
   checkPasswordLength,
+  onSubmit,
 } from "../shared/functions/field-validation";
 import "./Login.scss";
 
@@ -15,12 +16,13 @@ export default class Login extends Component {
   } = {};
   render(): ReactNode {
     return (
-      <form className="login">
+      <form className="login" onSubmit={onSubmit}>
         <h1>Login</h1>
-        <label htmlFor="username">Username</label>
+        <label htmlFor="login_username">Username</label>
         <input
           type="text"
-          id="username"
+          id="login_username"
+          name="username"
           onChange={({ target: { value } }) => {
             const { isValid, type: errorType } = checkEmailOrUsername(value);
             this.setState({ username: { value, error: !isValid, errorType } });
@@ -40,10 +42,11 @@ export default class Login extends Component {
           this.state.username?.errorType === "empty" && (
             <span className="error">Please enter a username.</span>
           )}
-        <label htmlFor="password">Password</label>
+        <label htmlFor="login_password">Password</label>
         <input
           type="password"
-          id="password"
+          id="login_password"
+          name="password"
           onChange={({ target: { value } }) => {
             const { isValid, type: errorType } = checkPasswordLength(value);
             this.setState({ password: { value, error: !isValid, errorType } });
