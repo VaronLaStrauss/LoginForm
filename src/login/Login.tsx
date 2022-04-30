@@ -4,16 +4,17 @@ import {
   checkPasswordLength,
   onSubmit,
 } from "../shared/functions/field-validation";
+import { FormType } from "../shared/types/form-type";
 import "./Login.scss";
 
 export default class Login extends Component {
+  controls: FormType = {};
+
   state: {
-    [formKey: string]: {
-      value: string;
-      error: boolean;
-      errorType: "length" | "email" | "empty";
-    };
-  } = {};
+    controls: FormType;
+    completed: boolean;
+  } = { completed: false, controls: this.controls };
+
   render(): ReactNode {
     return (
       <form className="login" onSubmit={onSubmit}>
@@ -25,21 +26,22 @@ export default class Login extends Component {
           name="username"
           onChange={({ target: { value } }) => {
             const { isValid, type: errorType } = checkEmailOrUsername(value);
-            this.setState({ username: { value, error: !isValid, errorType } });
+            this.controls.username = { value, error: !isValid, errorType };
+            this.setState({ controls: this.controls });
           }}
         />
-        {this.state.username?.error &&
-          this.state.username?.errorType !== "empty" && (
+        {this.controls.username?.error &&
+          this.controls.username?.errorType !== "empty" && (
             <span className="error">
               Your username doesn't look right.{" "}
-              {this.state.username?.errorType === "length" &&
+              {this.controls.username?.errorType === "length" &&
                 "It should be at least 6 characters long."}
-              {this.state.username?.errorType === "email" &&
+              {this.controls.username?.errorType === "email" &&
                 "It should be a valid email address."}
             </span>
           )}
-        {this.state.username?.error &&
-          this.state.username?.errorType === "empty" && (
+        {this.controls.username?.error &&
+          this.controls.username?.errorType === "empty" && (
             <span className="error">Please enter a username.</span>
           )}
         <label htmlFor="login_password">Password</label>
@@ -52,14 +54,14 @@ export default class Login extends Component {
             this.setState({ password: { value, error: !isValid, errorType } });
           }}
         />
-        {this.state.password?.error &&
-          this.state.password?.errorType === "length" && (
+        {this.controls.password?.error &&
+          this.controls.password?.errorType === "length" && (
             <span className="error">
               Maybe we can try to make the password a bit longer?
             </span>
           )}
-        {this.state.password?.error &&
-          this.state.password?.errorType === "empty" && (
+        {this.controls.password?.error &&
+          this.controls.password?.errorType === "empty" && (
             <span className="error">Please enter a password.</span>
           )}
         <button type="submit">Login</button>
