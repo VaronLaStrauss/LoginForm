@@ -1,6 +1,8 @@
 import { FormEvent } from "react";
 import { FormValidResult, FormValues } from "../types/form-type";
 
+// ! DO NOT TOUCH THIS FILE !
+
 export function checkEmailOrUsername(value: string): FormValidResult {
   if (!value) return { type: "empty", isValid: false };
   if (value.includes("@")) {

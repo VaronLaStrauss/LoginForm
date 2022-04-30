@@ -10,7 +10,9 @@ import "./Register.scss";
 
 export default class Register extends FormComponent {
   controlLength = 6;
+
   render(): ReactNode {
+    // TODO: You're free to change the elements EXCEPT the form and inputs
     return (
       <form className="login" onSubmit={this.onSubmit.bind(this)}>
         <h1>Register</h1>

@@ -9,6 +9,7 @@ import "./Login.scss";
 export default class Login extends FormComponent {
   controlLength = 2;
   render(): ReactNode {
+    // TODO: You're free to change the elements EXCEPT the form and inputs
     return (
       <form className="login" onSubmit={this.onSubmit.bind(this)}>
         <h1>Login</h1>
