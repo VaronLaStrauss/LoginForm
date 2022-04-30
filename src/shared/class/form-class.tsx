@@ -1,13 +1,13 @@
-import { Component } from "react";
+import { Component, FormEvent } from "react";
 import { FormType, FormValidResult } from "../types/form-type";
 
-export abstract class Form extends Component {
+export abstract class FormComponent extends Component {
   controls: FormType = {};
-
   state: {
     controls: FormType;
     completed: boolean;
   } = { completed: false, controls: this.controls };
+  abstract controlLength: number;
 
   markRender(
     key: string,
@@ -19,17 +19,20 @@ export abstract class Form extends Component {
   }
 
   get completed(): boolean {
+    if (Object.keys(this.controls).length < this.controlLength) return false;
     let complete = true;
     for (let key in this.controls) {
-      if (this.controls[key].error) {
+      if (this.controls[key]?.error) {
         complete = false;
         break;
       }
     }
+
     return complete;
   }
 
-  onSubmit() {
+  onSubmit(ev: FormEvent<HTMLFormElement>) {
+    ev.preventDefault();
     if (this.completed) {
       this.setState({ completed: true });
     }

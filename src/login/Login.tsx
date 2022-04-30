@@ -1,16 +1,16 @@
 import { ReactNode } from "react";
-import { Form } from "../shared/class/form-class";
+import { FormComponent } from "../shared/class/form-class";
 import {
   checkEmailOrUsername,
   checkMinLength,
-  onSubmit,
 } from "../shared/functions/field-validation";
 import "./Login.scss";
 
-export default class Login extends Form {
+export default class Login extends FormComponent {
+  controlLength = 2;
   render(): ReactNode {
     return (
-      <form className="login" onSubmit={onSubmit}>
+      <form className="login" onSubmit={this.onSubmit.bind(this)}>
         <h1>Login</h1>
         <label htmlFor="login_username">Username</label>
         <input
@@ -54,7 +54,14 @@ export default class Login extends Form {
           this.controls.password?.errorType === "empty" && (
             <span className="error">Please enter a password.</span>
           )}
-        <button type="submit">Login</button>
+        {this.state.completed && (
+          <span className="success">
+            Welcome back {this.controls.username?.value}!
+          </span>
+        )}
+        <button type="submit" disabled={!this.completed}>
+          Login
+        </button>
       </form>
     );
   }

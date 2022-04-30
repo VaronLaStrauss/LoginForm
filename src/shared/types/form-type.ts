@@ -1,5 +1,5 @@
 export type FormType = {
-  [formKey: string]: FormValues;
+  [formKey: string]: FormValues | undefined;
 };
 
 type ErrorTypes = "length" | "email" | "empty" | "mismatch";

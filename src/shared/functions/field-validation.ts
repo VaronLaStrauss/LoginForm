@@ -35,10 +35,15 @@ export function checkName(value: string | null): FormValidResult {
   return { type: "empty", isValid: !!value };
 }
 
-export function onSubmit(ev: FormEvent<HTMLFormElement>) {
+/**
+ * @deprecated
+ * @param ev
+ * @returns
+ */
+export function getFormData(ev: FormEvent<HTMLFormElement>) {
   ev.preventDefault();
   const formData = Object.fromEntries(
     new FormData(ev.target as HTMLFormElement)
   );
-  console.log(formData);
+  return formData;
 }

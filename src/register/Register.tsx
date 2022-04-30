@@ -1,18 +1,18 @@
 import { ReactNode } from "react";
-import { Form } from "../shared/class/form-class";
+import { FormComponent } from "../shared/class/form-class";
 import {
   checkEmail,
   checkMinLength,
   checkName,
-  onSubmit,
   verifyPassword,
 } from "../shared/functions/field-validation";
 import "./Register.scss";
 
-export default class Register extends Form {
+export default class Register extends FormComponent {
+  controlLength = 6;
   render(): ReactNode {
     return (
-      <form className="login" onSubmit={onSubmit}>
+      <form className="login" onSubmit={this.onSubmit.bind(this)}>
         <h1>Register</h1>
         <label htmlFor="firstName">First Name</label>
         <input
@@ -43,7 +43,6 @@ export default class Register extends Form {
               formal occassions.
             </span>
           )}
-
         <label htmlFor="register_username">Username</label>
         <input
           type="text"
@@ -84,7 +83,6 @@ export default class Register extends Form {
           this.controls.email?.errorType === "empty" && (
             <span className="error">Please enter your email address</span>
           )}
-
         <label htmlFor="register_password">Password</label>
         <input
           type="password"
@@ -129,7 +127,14 @@ export default class Register extends Form {
           this.controls.confirmPassword?.errorType === "empty" && (
             <span className="error">Please enter a password.</span>
           )}
-        <button type="submit">Register</button>
+        {this.state.completed && (
+          <span className="success">
+            You're all set! You can now log in with your new account.
+          </span>
+        )}
+        <button type="submit" disabled={!this.completed}>
+          Register
+        </button>
       </form>
     );
   }
