@@ -1,3 +1,5 @@
+import { FormEvent } from "react";
+
 export function checkEmailOrUsername(value: string | null): {
   type: "email" | "length" | "empty";
   isValid: boolean;
@@ -23,4 +25,12 @@ export function checkName(value: string | null): {
   isValid: boolean;
 } {
   return { type: "empty", isValid: !!value };
+}
+
+export function onSubmit(ev: FormEvent<HTMLFormElement>) {
+  ev.preventDefault();
+  const formData = Object.fromEntries(
+    new FormData(ev.target as HTMLFormElement)
+  );
+  console.log(formData);
 }
