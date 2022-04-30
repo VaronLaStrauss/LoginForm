@@ -1,32 +1,28 @@
 import { FormEvent } from "react";
+import { FormValidResult, FormValues } from "../types/form-type";
 
-export function checkEmailOrUsername(value: string | null): {
-  type: "email" | "length" | "empty";
-  isValid: boolean;
-} {
+export function checkEmailOrUsername(value: string): FormValidResult {
   if (!value) return { type: "empty", isValid: false };
   if (value.includes("@")) {
-    const regex = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
-    return { type: "email", isValid: regex.test(value) };
+    return checkEmail(value);
   }
-  return { type: "length", isValid: value.length >= 6 };
+  return checkMinLength(value);
 }
 
-export function checkPasswordLength(value: string): {
-  type: "length" | "empty";
-  isValid: boolean;
-} {
+export function checkEmail(value: string): FormValidResult {
+  if (!value) return { type: "empty", isValid: false };
+  const regex = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+  return { type: "email", isValid: regex.test(value) };
+}
+
+export function checkMinLength(value: string): FormValidResult {
   const length = value.length;
   return { type: length === 0 ? "empty" : "length", isValid: length >= 6 };
 }
 
 export function verifyPassword(
   value: string,
-  firstPasswordState?: {
-    value: string;
-    error: boolean;
-    errorType: "length" | "email" | "empty" | "mismatch";
-  }
+  firstPasswordState?: FormValues
 ): { type: "empty" | "mismatch"; isValid: boolean } {
   if (!value) return { type: "empty", isValid: false };
   if (value.length < 6) return { type: "mismatch", isValid: false };
@@ -35,10 +31,7 @@ export function verifyPassword(
   return { type: "empty", isValid: true };
 }
 
-export function checkName(value: string | null): {
-  type: "empty";
-  isValid: boolean;
-} {
+export function checkName(value: string | null): FormValidResult {
   return { type: "empty", isValid: !!value };
 }
 
