@@ -1,3 +1,7 @@
+body {
+  color: azure;
+}
+
 .login-container-form {
     display: flex;
     flex-direction: column;
@@ -9,6 +13,7 @@
     margin: auto;
   }
   
+
   .login{
     display: flex;
     flex-direction: column;
@@ -17,12 +22,12 @@
     border: 1px solid #dfdfdf;
     padding: 20px;
     border-radius: 5px;
-    background: #fff;
+    background: rgb(0, 0, 0);
   }
   
 .error {
     font-style: italic;
-    color: rgb(22, 22, 22);
+    color: rgb(134, 134, 134);
 }
   
     button[type=submit] {

@@ -1,16 +1,17 @@
 body {
-    background: rgb(19, 16, 75);
     background: radial-gradient(
       circle,
-      rgb(6, 1, 100) 0%,
+      rgb(1, 0, 22) 0%,
       rgb(36, 84, 94) 0%,
-      rgb(117, 117, 226) 100%
+      rgb(4, 4, 94) 100%
     );
 
   }
 
-.invite {
+.socialmedia {
   font-family: 'Abril Fatface', serif;
+  color:azure;
+  text-align: center;
 }
 
   .strike {
