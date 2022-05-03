@@ -7,6 +7,7 @@ import {
   verifyPassword,
 } from "../shared/functions/field-validation";
 import "./Register.scss";
+import logo from '../images/WALLeBayola w Text.png';
 
 export default class Register extends FormComponent {
   controlLength = 6;
@@ -16,6 +17,7 @@ export default class Register extends FormComponent {
     return (<>
       <div className="register-container-form">
         <form className="register" onSubmit={this.onSubmit.bind(this)}>
+          <img src={logo} />
           <h1>Register</h1>
           <label htmlFor="firstName">First Name</label>
           <input

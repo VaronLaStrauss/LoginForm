@@ -5,6 +5,7 @@ import {
   checkMinLength,
 } from "../shared/functions/field-validation";
 import "./Login.scss";
+import logo from '../images/WALLeBayola w Text.png';
 
 export default class Login extends FormComponent {
   controlLength = 2;
@@ -13,6 +14,7 @@ export default class Login extends FormComponent {
     return (<>
         <div className="login-container-form">
           <form className="login" onSubmit={this.onSubmit.bind(this)}>
+            <img src={logo} />
             <h1>Login</h1>
             <label htmlFor="login_username">Username</label>
             <input
