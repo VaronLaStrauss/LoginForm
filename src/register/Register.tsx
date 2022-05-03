@@ -13,7 +13,7 @@ export default class Register extends FormComponent {
 
   render(): ReactNode {
     // TODO: You're free to change the elements EXCEPT the form and inputs
-    return (
+    return (<>
       <form className="login" onSubmit={this.onSubmit.bind(this)}>
         <h1>Register</h1>
         <label htmlFor="firstName">First Name</label>
@@ -138,6 +138,6 @@ export default class Register extends FormComponent {
           Register
         </button>
       </form>
-    );
+      </>);
   }
 }

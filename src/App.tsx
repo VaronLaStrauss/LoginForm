@@ -12,7 +12,6 @@ class App extends Component {
       // TODO: design as responsive and mobile friendly
       <div className="App">
         <Login />
-        <Register />
       </div>
     );
   }
