@@ -1,20 +1,9 @@
-body {
-    background: rgb(19, 16, 75);
-    background: radial-gradient(
-      circle,
-      rgb(6, 1, 100) 0%,
-      rgb(36, 84, 94) 0%,
-      rgb(117, 117, 226) 100%
-    );
-  }
-
-
 .login-container-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 40vh;
     max-width: 500px;
     width: 100%;
     margin: auto;

@@ -1,0 +1,46 @@
+body {
+    background: rgb(19, 16, 75);
+    background: radial-gradient(
+      circle,
+      rgb(6, 1, 100) 0%,
+      rgb(36, 84, 94) 0%,
+      rgb(117, 117, 226) 100%
+    );
+
+  }
+
+  .strike {
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap; 
+}
+
+.or {
+  color: white;
+}
+
+.strike > span {
+    position: relative;
+    display: inline-block;
+}
+
+.strike > span:before,
+.strike > span:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 9999px;
+    height: 1px;
+    background: rgb(150, 198, 212);
+}
+
+.strike > span:before {
+    right: 100%;
+    margin-right: 15px;
+}
+
+.strike > span:after {
+    left: 100%;
+    margin-left: 15px;
+}
