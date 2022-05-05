@@ -1,49 +1,53 @@
-.register-container-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    max-width: 500px;
-    width: 100%;
-    margin: auto;
-  }
-  
-  .register{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 80%;
-    border: 1px solid #dfdfdf;
-    padding: 20px;
-    border-radius: 5px;
-    background: rgb(0, 0, 0);
-  }
-  
-.error {
-    font-style: italic;
-    color: rgb(134, 134, 134);
+// .register-container-form {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     height: 80vh;
+//     max-width: 500px;
+//     width: 100%;
+//     margin: auto;
+//   }
+
+//   .register{
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     width: 80%;
+//     border: 1px solid #dfdfdf;
+//     padding: 20px;
+//     border-radius: 5px;
+//     background: rgb(0, 0, 0);
+//   }
+
+// .error {
+//     font-style: italic;
+//     color: rgb(134, 134, 134);
+// }
+
+//     button[type=submit] {
+//     color: rgb(255, 255, 255);
+//     padding:5px 15px;
+//     background:DodgerBlue;
+//     border:0 none;
+//     cursor: pointer;
+//     -webkit-border-radius:7px;
+//     border-radius: 7px;
+//   }
+
+//   input[type=text] {
+//     background-color:rgb(134, 134, 134);
+//   }
+
+//   input[type=password] {
+//     background-color:rgb(134, 134, 134);
+//   }
+
+//   input[type=email] {
+//     background-color:rgb(134, 134, 134);
+//   }
+
+.register {
+  display: flex;
+  flex-direction: column;
 }
-  
-    button[type=submit] {
-    color: rgb(255, 255, 255);
-    padding:5px 15px;
-    background:DodgerBlue;
-    border:0 none;
-    cursor: pointer;
-    -webkit-border-radius:7px;
-    border-radius: 7px;
-  }
-
-  input[type=text] {
-    background-color:rgb(134, 134, 134);
-  }
-
-  input[type=password] {
-    background-color:rgb(134, 134, 134);
-  }
-
-  input[type=email] {
-    background-color:rgb(134, 134, 134);
-  }
- 

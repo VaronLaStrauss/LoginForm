@@ -21,33 +21,45 @@ class App extends Component {
     return (
       <main>
         <motion.div
-          className={`container ${typeChosen === "login" ? "active" : ""}`}
+          className={`${
+            typeChosen === "login"
+              ? "active"
+              : typeChosen
+              ? "left"
+              : "container"
+          }`}
           onClick={() => this.setState({ typeChosen: "login" })}
           whileHover={getHoverStyles("login")}
         >
           {typeChosen === "login" ? (
             <Login />
           ) : typeChosen ? (
-            <>
+            <span className="button">
               <span className="material-icons">chevron_left</span> Login
-            </>
+            </span>
           ) : (
-            "Login"
+            <span className="button">Login</span>
           )}
         </motion.div>
         <motion.div
-          className={`container ${typeChosen === "register" ? "active" : ""}`}
+          className={`${
+            typeChosen === "register"
+              ? "active"
+              : typeChosen
+              ? "right"
+              : "container"
+          }`}
           onClick={() => this.setState({ typeChosen: "register" })}
           whileHover={getHoverStyles("register")}
         >
           {typeChosen === "register" ? (
             <Register />
           ) : typeChosen ? (
-            <>
+            <span className="button">
               Register <span className="material-icons">chevron_right</span>
-            </>
+            </span>
           ) : (
-            "Register"
+            <span className="button">Register</span>
           )}
         </motion.div>
       </main>
