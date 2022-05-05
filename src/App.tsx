@@ -38,6 +38,7 @@ class App extends Component {
               <span className="material-icons">chevron_left</span> Login
             </span>
           ) : (
+            //<img src="./images/login.png"/>
             <span className="button">Login</span>
           )}
         </motion.div>

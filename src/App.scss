@@ -50,6 +50,16 @@
 //     margin-left: 15px;
 // }
 
+body {
+  background: rgb(155, 150, 255);
+  background: radial-gradient(
+    circle,
+    rgb(100, 93, 218) 0%,
+    rgb(157, 233, 248) 0%,
+    rgb(207, 207, 252) 100%
+  );
+}
+
 main {
   height: 100%;
   width: 100%;
