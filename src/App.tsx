@@ -2,27 +2,56 @@ import { Component, ReactNode } from "react";
 import "./App.scss";
 import Login from "./login/Login";
 import Register from "./register/Register";
-import logo from './images/WALLeBayola w Text.png';
+import { motion } from "framer-motion";
 
 class App extends Component {
+  state: { typeChosen: "login" | "register" | undefined } = {
+    typeChosen: undefined,
+  };
+
   render(): ReactNode {
-      // TODO: you can change the layout of this page
-      // TODO: design this page as transitionable:
-      // * move left to see login, move right to see register
-      // TODO: design as responsive and mobile friendly
-    return (<>
-      <div className="socialmedia">
-        <h1 className="caption">Connect with people on their wall around the world.</h1>
-        <h2 className="invite">Join <i>WALLeBayola</i> today.</h2>
-      </div>
-      <div className="App">
-        <Login />
-          <div className="strike">
-            <span className="or">OR</span>
-          </div>
-        <Register />
-      </div>
-      </>);
+    const { typeChosen } = this.state;
+
+    const getHoverStyles = (type: "login" | "register" | undefined): object => {
+      return {
+        scale: typeChosen !== type ? 1.5 : 1,
+      };
+    };
+
+    return (
+      <main>
+        <motion.div
+          className={`container ${typeChosen === "login" ? "active" : ""}`}
+          onClick={() => this.setState({ typeChosen: "login" })}
+          whileHover={getHoverStyles("login")}
+        >
+          {typeChosen === "login" ? (
+            <Login />
+          ) : typeChosen ? (
+            <>
+              <span className="material-icons">chevron_left</span> Login
+            </>
+          ) : (
+            "Login"
+          )}
+        </motion.div>
+        <motion.div
+          className={`container ${typeChosen === "register" ? "active" : ""}`}
+          onClick={() => this.setState({ typeChosen: "register" })}
+          whileHover={getHoverStyles("register")}
+        >
+          {typeChosen === "register" ? (
+            <Register />
+          ) : typeChosen ? (
+            <>
+              Register <span className="material-icons">chevron_right</span>
+            </>
+          ) : (
+            "Register"
+          )}
+        </motion.div>
+      </main>
+    );
   }
 }
 
