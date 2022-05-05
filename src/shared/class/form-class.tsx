@@ -37,6 +37,7 @@ export abstract class FormComponent extends Component {
     if (this.completed) {
       const form = ev.target as HTMLFormElement;
       form.reset();
+      this.controls = {};
       this.setState({ completed: true });
     }
   }
