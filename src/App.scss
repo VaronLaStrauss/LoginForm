@@ -130,3 +130,15 @@ main {
   color: rgb(25, 135, 84);
   text-align: center;
 }
+
+@font-face {
+  font-family: 'masque';
+  src: url(fonts/MASQUE__.ttf);
+  font-style: normal;
+  font-weight: 100;
+}
+
+span {
+  font-family: masque;
+  font-weight: 100;
+}

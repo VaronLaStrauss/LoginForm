@@ -10,9 +10,9 @@ class App extends Component {
   };
 
   render(): ReactNode {
-    const mystyle = {
-      fontFamily: "Masque"
-    };
+    // const mystyle = {
+    //   fontFamily: "Masque"
+    // };
     const { typeChosen } = this.state;
 
     const getHoverStyles = (type: "login" | "register" | undefined): object => {
@@ -42,7 +42,8 @@ class App extends Component {
             </span>
           ) : (
             //<img src={require('./images/login.png')} />
-            <span className="button" style={mystyle}>Login</span>
+            // <span className="button" style={mystyle}>Login</span>
+            <span className="button">Login</span>
           )}
         </motion.div>
         <motion.div
@@ -64,7 +65,8 @@ class App extends Component {
             </span>
           ) : (
             //<img src={require('./images/register.png')} className="logo" />
-            <span className="button" style={mystyle}>Register</span>
+            // <span className="button" style={mystyle}>Register</span>
+            <span className="button">Register</span>
           )}
         </motion.div>
       </main>
