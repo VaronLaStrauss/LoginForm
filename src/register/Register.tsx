@@ -20,7 +20,9 @@ export default class Register extends FormComponent {
           <img src={logo} className="img-fluid" />
         </div>
         <form className="register" onSubmit={this.onSubmit.bind(this)}>
-          <h1>Register</h1>
+
+          <h1><i>Register</i></h1>
+          <br></br>
           <div className="row">
             <div className="col-md-6 col-xs-12">
               <label htmlFor="firstName" className="form-label">

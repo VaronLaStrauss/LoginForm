@@ -17,7 +17,9 @@ export default class Login extends FormComponent {
           <img src={logo} className="img-fluid" />
         </div>
         <form className="login" onSubmit={this.onSubmit.bind(this)}>
-          <h1>Login</h1>
+
+          <h1><i>Login</i></h1>
+          <br></br>
           <label htmlFor="login_username" className="form-label">
             Username
           </label>
