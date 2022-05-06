@@ -16,7 +16,9 @@ export default class Register extends FormComponent {
     // TODO: You're free to change the elements EXCEPT the form and inputs
     return (
       <div className="container-fluid">
-        <img src={logo} className="img-fluid" />
+        <div className="div-logo">
+          <img src={logo} className="img-fluid" />
+        </div>
         <form className="register" onSubmit={this.onSubmit.bind(this)}>
           <h1>Register</h1>
           <div className="row">

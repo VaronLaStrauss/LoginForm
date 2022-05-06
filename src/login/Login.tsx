@@ -13,7 +13,9 @@ export default class Login extends FormComponent {
     // TODO: Change to bootstrap classes
     return (
       <div className="container-fluid">
-        <img src={logo} className="img-fluid" />
+        <div className="div-logo">
+          <img src={logo} className="img-fluid" />
+        </div>
         <form className="login" onSubmit={this.onSubmit.bind(this)}>
           <h1>Login</h1>
           <label htmlFor="login_username" className="form-label">
